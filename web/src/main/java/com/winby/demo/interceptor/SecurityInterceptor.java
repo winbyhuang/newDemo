@@ -1,4 +1,4 @@
-package com.winby.demo.common.interceptor;
+package com.winby.demo.interceptor;
 
 import com.winby.demo.common.constant.SysConstants;
 import org.apache.logging.log4j.LogManager;

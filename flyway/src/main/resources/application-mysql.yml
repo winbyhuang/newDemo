@@ -26,6 +26,7 @@ spring:
 mybatis:
     mapperLocations: classpath*:com/example/demo/dao/persistence/*.xml
     typeAliasesPackage: com.example.demo.dao
+
 flyway:
   enabled: false
 
