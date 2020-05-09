@@ -1,27 +1,33 @@
 package com.winby.demo.controller;
 
+import com.google.common.collect.Maps;
 import com.winby.demo.common.constant.SysConstants;
 import com.winby.demo.common.util.GsonUtil;
+import com.winby.demo.core.service.DemoService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
-/**
- * Created by Administrator on 2016/10/13.
- */
 @RequestMapping("common")
 @RestController
 @Log4j2
 public class DemoController {
-//    @Autowired
-//    private DemoService demoService;
+    @Autowired
+    private DemoService demoService;
 
     @RequestMapping("test")
-    Object save(HttpServletRequest request, String msg) throws Exception {
-        log(Thread.currentThread().getStackTrace()[1].getMethodName(), request.getAttribute(SysConstants.REQUEST_REMARK) + GsonUtil.toJson(msg));
-        return msg;
+    Map save(HttpServletRequest request, Long id) throws Exception {
+
+        Object demo = demoService.getById(id);
+        log.info("{}:{}", Thread.currentThread().getStackTrace()[1].getMethodName(),
+                GsonUtil.toJson(demo) + request.getAttribute(SysConstants.REQUEST_REMARK));
+        Map result = Maps.newHashMap();
+        result.put("result",demo);
+        return result;
     }
 //    @PostMapping("save.do")
 //    ResultEntity save(HttpServletRequest request, DemoDO entity) throws Exception {

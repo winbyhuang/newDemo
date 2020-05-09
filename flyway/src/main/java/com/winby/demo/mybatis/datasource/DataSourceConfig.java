@@ -3,18 +3,18 @@ package com.winby.demo.mybatis.datasource;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.example.demo.dao.persistence", sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(basePackages = "com.winby.demo.core.dao.persistence", sqlSessionFactoryRef = "sqlSessionFactory")
 public class DataSourceConfig {
     @Value("${spring.datasource.driver-class-name}")
     String driver;

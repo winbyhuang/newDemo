@@ -3,7 +3,7 @@ logging:
 
 spring:
   profiles:
-   active: dev,mysql,thymeleaf,redis,mongodb,kafka
+   active: dev,mysql
 #   active: dev,mysql,thymeleaf,redis,mongodb,kafka,dubboProvider
 #   active: pro,mysql,thymeleaf,redis,mongodb,kafka,dubboConsumer
 ---

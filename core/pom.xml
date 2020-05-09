@@ -11,5 +11,12 @@
 
     <artifactId>core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>newDemo</groupId>
+            <artifactId>flyway</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

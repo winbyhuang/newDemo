@@ -3,13 +3,13 @@
 spring:
   datasource:
     #db1
-      url: jdbc:mysql://172.18.35.51:3306/winby
+      url: jdbc:mysql://192.168.0.2:13306/demo
       username: root
-      password: root
+      password: 123456
 #      #db2
-      url2: jdbc:mysql://172.18.35.51:3306/winby
+      url2: jdbc:mysql://192.168.0.2:13306/demo
       username2: root
-      password2: root
+      password2: 123456
 #      db-pool-setting
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver
@@ -23,11 +23,7 @@ spring:
       testOnBorrow: false
       testOnReturn: false
 
-mybatis:
-    mapperLocations: classpath*:com/example/demo/dao/persistence/*.xml
-    typeAliasesPackage: com.example.demo.dao
-
-flyway:
-  enabled: false
+#flyway:
+#  enabled: false
 
 
