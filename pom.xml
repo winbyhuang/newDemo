@@ -21,6 +21,7 @@
         <module>web</module>
         <module>flyway</module>
         <module>core</module>
+        <module>nacos</module>
     </modules>
     <dependencyManagement>
         <dependencies>
