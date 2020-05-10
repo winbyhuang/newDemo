@@ -1,62 +1,11 @@
-#logging:
-#  config: classpath:log4j2.xml
-
 spring:
   profiles:
-   active: dev,mysql
-#   active: dev,mysql,thymeleaf,redis,mongodb,kafka,dubboProvider
-#   active: pro,mysql,thymeleaf,redis,mongodb,kafka,dubboConsumer
----
-#开发环境配置
+   active: mysql
+  session:
+    timeout: 30
+  application:
+    name: web
 server:
   port: 8888
-  session-timeout: 30
   servlet:
     context-path: /
-nacos:
-  config:
-    server-addr: 127.0.0.1:8848
-  discovery:
-    server-addr: 127.0.0.1:8848
-    register:
-      service-name: demo
-
-spring:
-  profiles: dev
-  application:
-    name: demo
-management:
-  endpoint:
-    health:
-      show-details: always
-#    web:
-#      exposure:
-#        include: *
----
-#生产环境配置
-server:
-  port: 8081
-  session-timeout: 30
-  servlet:
-    context-path: /
-spring:
-  profiles: pro
----
-  #dubbo生产者环境配置
-  server:
-    port: 8001
-    session-timeout: 30
-  servlet:
-    context-path: /
-  spring:
-    profiles: provider
----
-  #dubbo消费者环境配置
-  server:
-    port: 8002
-    session-timeout: 30
-  servlet:
-    context-path: /
-  spring:
-    profiles: concumer
-
