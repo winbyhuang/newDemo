@@ -1,5 +1,5 @@
-logging:
-  config: classpath:log4j2.xml
+#logging:
+#  config: classpath:log4j2.xml
 
 spring:
   profiles:
@@ -13,9 +13,25 @@ server:
   session-timeout: 30
   servlet:
     context-path: /
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848
+  discovery:
+    server-addr: 127.0.0.1:8848
+    register:
+      service-name: demo
 
 spring:
   profiles: dev
+  application:
+    name: demo
+management:
+  endpoint:
+    health:
+      show-details: always
+#    web:
+#      exposure:
+#        include: *
 ---
 #生产环境配置
 server:

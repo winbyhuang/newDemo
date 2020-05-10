@@ -1,0 +1,100 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--&lt;!&ndash;设置log4j2的自身log级别为warn&ndash;&gt;-->
+<!--&lt;!&ndash; 在运行时，可以动态修改配置文件，不用重启服务，在固定时长更新一次配置文件。monitorInterval设置更新配置文件时长， 单位为seconds ， min senconds >= 5secondes &ndash;&gt;-->
+<!--<configuration status="warn" monitorInterval="30">-->
+
+<!--    <Properties>-->
+<!--        <Property name="log.path">logs/demo</Property>-->
+<!--        &lt;!&ndash;<Property name="log.path">D:</Property>&ndash;&gt;-->
+<!--        <Property name="log.level">info</Property>-->
+<!--    </Properties>-->
+<!--    <appenders>-->
+<!--        <console name="Console" target="SYSTEM_OUT">-->
+<!--            <PatternLayout charset="UTF-8" pattern="[%d{HH:mm:ss:SSS}]  [%p] - %l - %m%n"/>-->
+<!--        </console>-->
+
+<!--        <RollingRandomAccessFile name="InfoFile" fileName="${log.path}/info.log" filePattern="${log.path}/backup/info-%d{yyyy-MM-dd}-%i.log.gz">-->
+<!--            <Filters>-->
+<!--                <ThresholdFilter level="INFO"/>-->
+<!--                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--            </Filters>-->
+<!--            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] - %l - %m%n"/>-->
+<!--            <Policies>-->
+<!--                <SizeBasedTriggeringPolicy size="100 MB"/>-->
+<!--                <TimeBasedTriggeringPolicy  interval="1"  modulate="true"/>-->
+<!--            </Policies>-->
+<!--            <DefaultRolloverStrategy  fileIndex="max" max="7">-->
+<!--                &lt;!&ndash; 删除指定目录下60天之前的日志&ndash;&gt;-->
+<!--                <Delete basePath="${log.path}/backup/" maxDepth="2">-->
+<!--                    <IfFileName glob="*/info-*.log.gz" />-->
+<!--                    <IfLastModified age="60d" />-->
+<!--                </Delete>-->
+<!--            </DefaultRolloverStrategy>-->
+<!--        </RollingRandomAccessFile>-->
+
+<!--        <RollingRandomAccessFile name="ErrorFile" fileName="${log.path}/error.log" filePattern="${log.path}/backup/error-%d{yyyy-MM-dd}-%i.log.gz">-->
+<!--            <Filters>-->
+<!--                <ThresholdFilter level="ERROR"/>-->
+<!--                &lt;!&ndash;<ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>&ndash;&gt;-->
+<!--            </Filters>-->
+<!--            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] - %l - %m%n"/>-->
+<!--            <Policies>-->
+<!--                <SizeBasedTriggeringPolicy size="100 MB"/>-->
+<!--                <TimeBasedTriggeringPolicy  interval="1"  modulate="true"/>-->
+<!--            </Policies>-->
+<!--            <DefaultRolloverStrategy  fileIndex="max" max="7">-->
+<!--                &lt;!&ndash; 删除指定目录下60天之前的日志&ndash;&gt;-->
+<!--                <Delete basePath="${log.path}/backup/" maxDepth="2">-->
+<!--                    <IfFileName glob="*/error-*.log.gz" />-->
+<!--                    <IfLastModified age="60d" />-->
+<!--                </Delete>-->
+<!--            </DefaultRolloverStrategy>-->
+<!--        </RollingRandomAccessFile>-->
+
+<!--        &lt;!&ndash;<RollingFile name="RollingFileWarn" fileName="${sys:user.home}/logs/hpaasvc/warn.log"&ndash;&gt;-->
+<!--        &lt;!&ndash;filePattern="${sys:user.home}/logs/hpaasvc/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">&ndash;&gt;-->
+<!--        &lt;!&ndash;<Filters>&ndash;&gt;-->
+<!--        &lt;!&ndash;<ThresholdFilter level="WARN"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</Filters>&ndash;&gt;-->
+<!--        &lt;!&ndash;<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<Policies>&ndash;&gt;-->
+<!--        &lt;!&ndash;<TimeBasedTriggeringPolicy/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<SizeBasedTriggeringPolicy size="100 MB"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</Policies>&ndash;&gt;-->
+<!--        &lt;!&ndash;</RollingFile>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;<RollingFile name="RollingFileError" fileName="${sys:user.home}/logs/hpaasvc/error.log"&ndash;&gt;-->
+<!--        &lt;!&ndash;filePattern="${sys:user.home}/logs/hpaasvc/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">&ndash;&gt;-->
+<!--        &lt;!&ndash;<ThresholdFilter level="ERROR"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<Policies>&ndash;&gt;-->
+<!--        &lt;!&ndash;<TimeBasedTriggeringPolicy/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<SizeBasedTriggeringPolicy size="100 MB"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</Policies>&ndash;&gt;-->
+<!--        &lt;!&ndash;</RollingFile>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;<Async name="Async">&ndash;&gt;-->
+<!--            &lt;!&ndash;<AppenderRef ref="InfoFile"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</Async>&ndash;&gt;-->
+<!--    </appenders>-->
+
+<!--    <loggers>-->
+<!--        &lt;!&ndash;过滤掉spring和hibernate的一些无用的debug信息&ndash;&gt;-->
+<!--        &lt;!&ndash;<logger name="org.springframework" level="INFO">&ndash;&gt;-->
+<!--        &lt;!&ndash;</logger>&ndash;&gt;-->
+<!--        &lt;!&ndash;<logger name="org.apache.ibatis" level="INFO">&ndash;&gt;-->
+<!--        &lt;!&ndash;</logger>&ndash;&gt;-->
+<!--        &lt;!&ndash;<Logger name="RollingFileInfo" level="trace" additivity="true">&ndash;&gt;-->
+<!--        &lt;!&ndash;<AppenderRef ref="RollingFileInfo"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</Logger>&ndash;&gt;-->
+<!--        <root level="${log.level}">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--            <appender-ref ref="InfoFile"/>-->
+<!--            <appender-ref ref="ErrorFile"/>-->
+<!--            &lt;!&ndash;<appender-ref ref="RollingFileWarn"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<appender-ref ref="RollingFileError"/>&ndash;&gt;-->
+<!--        </root>-->
+<!--    </loggers>-->
+
+<!--</configuration>-->

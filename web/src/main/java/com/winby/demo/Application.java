@@ -1,5 +1,7 @@
 package com.winby.demo;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
+import com.alibaba.nacos.spring.context.annotation.discovery.EnableNacosDiscovery;
 import lombok.extern.java.Log;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +13,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 //@EnableTransactionManagement
 @Log
 @SpringBootApplication
+@NacosPropertySource(dataId = "example", autoRefreshed = true)
+@EnableNacosDiscovery
 public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(Application.class, args);
