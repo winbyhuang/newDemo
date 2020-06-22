@@ -1,6 +1,6 @@
 spring:
   profiles:
-   active: mysql
+   active: mysql,redis
   session:
     timeout: 30
   application:

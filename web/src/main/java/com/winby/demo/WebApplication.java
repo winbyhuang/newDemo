@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @Log
 @SpringBootApplication
+//@EnableCaching
 public class WebApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(WebApplication.class, args);

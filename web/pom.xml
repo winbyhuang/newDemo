@@ -18,6 +18,11 @@
             <artifactId>core</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>newDemo</groupId>
+            <artifactId>redis</artifactId>
+            <version>1.0</version>
+        </dependency>
 
 
 
